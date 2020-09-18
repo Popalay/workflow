@@ -41,6 +41,7 @@ dependencies {
   implementation(project(":workflow-runtime"))
   implementation(Dependencies2.AndroidX.activity)
   implementation(Dependencies2.AndroidX.fragment)
+  implementation(Dependencies2.AndroidX.Lifecycle.ktx)
   implementation(Dependencies2.AndroidX.Lifecycle.reactivestreams)
   implementation(Dependencies2.AndroidX.savedstate)
   implementation(Dependencies2.Kotlin.Coroutines.android)

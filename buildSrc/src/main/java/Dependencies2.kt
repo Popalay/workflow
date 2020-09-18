@@ -4,7 +4,7 @@ import java.util.Locale.US
 import kotlin.reflect.full.declaredMembers
 
 object Versions {
-  const val compose = "0.1.0-dev07"
+  const val compose = "1.0.0-alpha02"
   const val coroutines = "1.3.9"
   const val kotlin = "1.4.10"
   const val targetSdk = 29
@@ -23,6 +23,7 @@ object Dependencies2 {
     const val gridlayout = "androidx.gridlayout:gridlayout:1.0.0"
 
     object Lifecycle {
+      const val ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
       const val reactivestreams = "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0"
     }
 
@@ -39,9 +40,10 @@ object Dependencies2 {
   }
 
   object Compose {
-    const val foundation = "androidx.ui:ui-foundation:${Versions.compose}"
-    const val layout = "androidx.ui:ui-layout:${Versions.compose}"
-    const val material = "androidx.ui:ui-material:${Versions.compose}"
+    const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+    const val layout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
+    const val material = "androidx.compose.material:material:${Versions.compose}"
+    const val savedstate = "androidx.compose.runtime:runtime-saved-instance-state:${Versions.compose}"
     const val test = "androidx.ui:ui-test:${Versions.compose}"
     const val tooling = "androidx.ui:ui-tooling:${Versions.compose}"
   }

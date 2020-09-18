@@ -21,11 +21,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.squareup.workflow.Workflow
 import com.squareup.workflow.ui.WorkflowRunner.Config
-import io.reactivex.Flowable
 
 /**
  * A [Fragment] that can run a workflow. Subclasses implement [onCreateWorkflow]
- * to configure themselves with a [Workflow], [ViewRegistry] and [inputs][Flowable].
+ * to configure themselves with a [Workflow], [ViewRegistry] and [inputs][Config.props].
  *
  * For a workflow with no inputs, or a static configuration, that's as simple as:
  *
@@ -63,14 +62,14 @@ abstract class WorkflowFragment<PropsT, OutputT : Any> : Fragment() {
   protected abstract val viewEnvironment: ViewEnvironment
 
   /**
-   * Called from [onActivityCreated], so it should be safe for implementations
+   * Called from [onViewStateRestored], so it should be safe for implementations
    * to call [getActivity].
    */
   protected abstract fun onCreateWorkflow(): Config<PropsT, OutputT>
 
   /**
    * Provides subclasses with access to the products of the running [Workflow].
-   * Safe to call after [onActivityCreated].
+   * Safe to call after [onViewStateRestored].
    */
   protected val runner: WorkflowRunner<OutputT> get() = _runner
 
@@ -82,8 +81,8 @@ abstract class WorkflowFragment<PropsT, OutputT : Any> : Fragment() {
     return WorkflowLayout(inflater.context)
   }
 
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
+  override fun onViewStateRestored(savedInstanceState: Bundle?) {
+    super.onViewStateRestored(savedInstanceState)
 
     _runner = WorkflowRunner.startWorkflow(this, ::onCreateWorkflow)
 
